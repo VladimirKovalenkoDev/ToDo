@@ -7,16 +7,18 @@
 //
 
 import UIKit
+import CoreData
 
 class ToDoListViewController: UITableViewController {
-    var itemArray = [ItemsModel]()
+    var itemArray = [Item]()
+    //let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    let context  = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-   
-     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       print(dataFilePath)
       loadData()
     }
  
@@ -30,18 +32,15 @@ class ToDoListViewController: UITableViewController {
         //Ternary operator ==>
         // value = condition ? valueIfTrue : ValueIfFalse
         cell.accessoryType = item.done == true ? .checkmark : .none
-        /*if item.done == true {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
-        }
-         */
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-        self.saveData()
+      //  itemArray.remove(at: indexPath.row)
+       // context.delete(itemArray[indexPath.row])
+        saveData()
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -51,8 +50,9 @@ class ToDoListViewController: UITableViewController {
         let alert = UIAlertController(title: "add new item", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add Item", style: .default) { ( action) in
             //what will happen after click addItem
-           let newItem = ItemsModel()
+            let newItem = Item(context: self.context )
             newItem.title = textField.text!
+            newItem.done = false
             self.itemArray.append(newItem)
             self.saveData()
         }
@@ -68,25 +68,22 @@ class ToDoListViewController: UITableViewController {
     
     
     func saveData () {
-        let encoder = PropertyListEncoder()
+        
          do {
-             let data = try encoder.encode(itemArray)
-             try data.write(to: dataFilePath!)
+            try  context.save()
          } catch {
-             print("error encoding  array: \(error)")
+         print("error saving context: \(error)")
          }
         
          self.tableView.reloadData()
     }
+    
     func loadData() {
-        if let data = try? Data(contentsOf: dataFilePath!){
-            let decoder = PropertyListDecoder()
-            do{
-                itemArray = try decoder.decode([ItemsModel].self, from: data)
-            } catch {
-                print("\(error)")
-            }
-            
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+           itemArray =  try context.fetch(request)
+        } catch  {
+            print("error fetching data from context:\(error)")
         }
     }
     

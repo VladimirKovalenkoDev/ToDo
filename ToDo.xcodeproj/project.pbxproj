@@ -14,7 +14,6 @@
 		DDF69D4B24A3C67F002BD1D7 /* ToDo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DDF69D4924A3C67F002BD1D7 /* ToDo.xcdatamodeld */; };
 		DDF69D4D24A3C684002BD1D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDF69D4C24A3C684002BD1D7 /* Assets.xcassets */; };
 		DDF69D5024A3C684002BD1D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF69D4E24A3C684002BD1D7 /* LaunchScreen.storyboard */; };
-		DDF69D5824A664A3002BD1D7 /* ItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF69D5724A664A3002BD1D7 /* ItemsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		DDF69D4C24A3C684002BD1D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDF69D4F24A3C684002BD1D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDF69D5124A3C684002BD1D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DDF69D5724A664A3002BD1D7 /* ItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +66,6 @@
 				DDF69D4C24A3C684002BD1D7 /* Assets.xcassets */,
 				DDF69D4E24A3C684002BD1D7 /* LaunchScreen.storyboard */,
 				DDF69D5124A3C684002BD1D7 /* Info.plist */,
-				DDF69D4924A3C67F002BD1D7 /* ToDo.xcdatamodeld */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -76,7 +73,7 @@
 		DDF69D5A24A66BD3002BD1D7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DDF69D5724A664A3002BD1D7 /* ItemsModel.swift */,
+				DDF69D4924A3C67F002BD1D7 /* ToDo.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,7 +167,6 @@
 			files = (
 				DDF69D4524A3C67F002BD1D7 /* ToDoListViewController.swift in Sources */,
 				DDF69D4124A3C67F002BD1D7 /* AppDelegate.swift in Sources */,
-				DDF69D5824A664A3002BD1D7 /* ItemsModel.swift in Sources */,
 				DDF69D4324A3C67F002BD1D7 /* SceneDelegate.swift in Sources */,
 				DDF69D4B24A3C67F002BD1D7 /* ToDo.xcdatamodeld in Sources */,
 			);
