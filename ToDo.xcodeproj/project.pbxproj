@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD37196724B76E36008A0CAE /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD37196624B76E36008A0CAE /* CategoryViewController.swift */; };
 		DDF69D4124A3C67F002BD1D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF69D4024A3C67F002BD1D7 /* AppDelegate.swift */; };
 		DDF69D4324A3C67F002BD1D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF69D4224A3C67F002BD1D7 /* SceneDelegate.swift */; };
 		DDF69D4524A3C67F002BD1D7 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF69D4424A3C67F002BD1D7 /* ToDoListViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD37196624B76E36008A0CAE /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		DDF69D3D24A3C67F002BD1D7 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDF69D4024A3C67F002BD1D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDF69D4224A3C67F002BD1D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 		DDF69D5C24A66BE9002BD1D7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DD37196624B76E36008A0CAE /* CategoryViewController.swift */,
 				DDF69D4424A3C67F002BD1D7 /* ToDoListViewController.swift */,
 			);
 			path = Controller;
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD37196724B76E36008A0CAE /* CategoryViewController.swift in Sources */,
 				DDF69D4524A3C67F002BD1D7 /* ToDoListViewController.swift in Sources */,
 				DDF69D4124A3C67F002BD1D7 /* AppDelegate.swift in Sources */,
 				DDF69D4324A3C67F002BD1D7 /* SceneDelegate.swift in Sources */,
