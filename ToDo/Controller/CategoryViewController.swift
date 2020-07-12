@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import ChameleonFramework
  
 class CategoryViewController: SwipeTableViewController  {
     
@@ -19,6 +19,11 @@ class CategoryViewController: SwipeTableViewController  {
         super.viewDidLoad()
         loadData()
         tableView.rowHeight = 80
+        tableView.separatorStyle = .none
+    }
+    override func viewWillAppear(_ animated: Bool) {
+          guard let navBar = navigationController?.navigationBar else {fatalError("nav controller doesn't exist ")}
+        navBar.barTintColor = UIColor(hexString: "CCAFAF")
     }
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
@@ -27,7 +32,7 @@ class CategoryViewController: SwipeTableViewController  {
             //what will happen after click addItem
             let newCategory = Categories(context: self.context )
             newCategory.name = textField.text!
-            
+            newCategory.colour = UIColor.randomFlat().hexValue()
             self.categories.append(newCategory)
             self.saveData()
         }
@@ -51,6 +56,11 @@ class CategoryViewController: SwipeTableViewController  {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
            let category = categories[indexPath.row]
            cell.textLabel?.text = category.name
+        guard let categoryColor = UIColor(hexString: category.colour ?? "CCAFAF") else {
+            fatalError()
+        }
+        cell.textLabel?.textColor = ContrastColorOf(categoryColor, returnFlat: true)
+        cell.backgroundColor = categoryColor
         
            return cell
     }
