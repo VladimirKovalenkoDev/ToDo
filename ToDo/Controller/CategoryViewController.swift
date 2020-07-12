@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+
  
-class CategoryViewController: UITableViewController {
+class CategoryViewController: SwipeTableViewController  {
     
      var categories = [Categories]()
     
@@ -17,6 +18,7 @@ class CategoryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        tableView.rowHeight = 80
     }
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
@@ -46,11 +48,13 @@ class CategoryViewController: UITableViewController {
         return categories.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
            let category = categories[indexPath.row]
            cell.textLabel?.text = category.name
+        
            return cell
     }
+   
   // MARK: - Table View Delegate methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToItems", sender: self)
@@ -82,9 +86,18 @@ class CategoryViewController: UITableViewController {
                categories =  try context.fetch(request)
             } catch  {
                 print("error fetching data from context:\(error)")
-            }
+                }
             tableView.reloadData()
         }
+         // MARK: -  Delete data from swipe
+    override func updateModel(at indexPath: IndexPath) {
         
+        let category = self.categories[indexPath.row]
+        self.context.delete(category)
+        self.categories.remove(at: indexPath.row)
+        }
     }
+
+
+  
  

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ToDoListViewController: UITableViewController {
+class ToDoListViewController: SwipeTableViewController {
     
     
     var itemArray = [Item]()
@@ -17,6 +17,7 @@ class ToDoListViewController: UITableViewController {
     var selectedCategory : Categories? {
         didSet{
             loadData()
+            tableView.rowHeight = 80
         }
     }
 
@@ -25,7 +26,7 @@ class ToDoListViewController: UITableViewController {
         return itemArray.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         let item = itemArray[indexPath.row]
         cell.textLabel?.text = item.title
         //Ternary operator ==>
@@ -89,6 +90,12 @@ class ToDoListViewController: UITableViewController {
             print("error fetching data from context:\(error)")
         }
         tableView.reloadData()
+    }
+    override func updateModel(at indexPath: IndexPath) {
+        
+        let item = self.itemArray[indexPath.row]
+               self.context.delete(item)
+               self.itemArray.remove(at: indexPath.row)
     }
     
 }
