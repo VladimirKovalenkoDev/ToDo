@@ -26,22 +26,21 @@ class ToDoListViewController: SwipeTableViewController {
         super.viewDidLoad()
         tableView.rowHeight = 80
         tableView.separatorStyle = .none
-       
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
        
-        if let colorHex = selectedCategory?.colour {
+        if let colourHex = selectedCategory?.colour {
              title = selectedCategory!.name
-            
+          //tableView.backgroundColor = UIColor(hexString: colourHex)
              guard let navBar = navigationController?.navigationBar else {fatalError("nav controller doesn't exist ")}
-            if let navBarColor = UIColor(hexString: colorHex){
-                navBar.barTintColor = navBarColor
-                navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true )
-                toDoListSearchbar.barTintColor = navBarColor
-                navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(navBarColor, returnFlat: true)]
+            
+            if let navBarColour = UIColor(hexString: colourHex) {
+                navBar.backgroundColor = navBarColour
+                navBar.tintColor = ContrastColorOf(navBarColour, returnFlat: true)
+               toDoListSearchbar.barTintColor = navBarColour
             }
-           
         }
     }
 
@@ -62,6 +61,7 @@ class ToDoListViewController: SwipeTableViewController {
         }
         
         cell.accessoryType = item.done == true ? .checkmark : .none
+        
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

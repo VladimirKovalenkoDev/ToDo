@@ -20,10 +20,13 @@ class CategoryViewController: SwipeTableViewController  {
         loadData()
         tableView.rowHeight = 80
         tableView.separatorStyle = .none
+       // tableView.backgroundColor = UIColor(hexString: "CCAFAF")
     }
     override func viewWillAppear(_ animated: Bool) {
-          guard let navBar = navigationController?.navigationBar else {fatalError("nav controller doesn't exist ")}
-        navBar.barTintColor = UIColor(hexString: "CCAFAF")
+          guard let navBar = navigationController?.navigationBar else { fatalError("Navigation controller does not exist.")
+                 }
+                 navBar.backgroundColor = UIColor(hexString: "CCAFAF")
+       
     }
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
